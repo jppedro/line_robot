@@ -1,0 +1,378 @@
+#VRML_SIM R2021a utf8
+WorldInfo {
+  coordinateSystem "NUE"
+}
+Viewpoint {
+  orientation -0.0021171705129695365 -0.9880186248456775 -0.15432016895751277 3.114484391421285
+  position 0.7933144311501734 1.0238728241032065 -2.8004601524750354
+}
+RectangleArena {
+  translation 0 0 0.73
+  floorSize 3 3
+  floorTileSize 0 0
+  floorAppearance Parquetry {
+    type "light strip"
+  }
+}
+Robot {
+  translation 0.74 0.05 -0.03
+  scale 2 2 2
+  children [
+    DistanceSensor {
+      children [
+        Transform {
+          translation 0 0 -0.125
+          children [
+            DEF sensor_back Shape {
+              appearance PBRAppearance {
+                roughness 1
+                metalness 0
+              }
+              geometry Sphere {
+                radius 0.002
+              }
+            }
+          ]
+        }
+      ]
+      name "sensor_back"
+      boundingObject USE sensor_back
+    }
+    DistanceSensor {
+      translation 0 0 0.14
+      children [
+        Transform {
+          translation 0 0 -0.015
+          children [
+            DEF sensor_front Shape {
+              appearance PBRAppearance {
+                roughness 1
+                metalness 0
+              }
+              geometry Sphere {
+                radius 0.002
+              }
+            }
+          ]
+        }
+      ]
+      name "sensor_front"
+      boundingObject USE sensor_front
+    }
+    DistanceSensor {
+      translation -0.05 0 0
+      children [
+        Transform {
+          children [
+            DEF sensor_right Shape {
+              appearance PBRAppearance {
+                roughness 1
+                metalness 0
+              }
+              geometry Sphere {
+                radius 0.002
+              }
+            }
+          ]
+        }
+      ]
+      name "sensor_right"
+      boundingObject USE sensor_right
+    }
+    DistanceSensor {
+      translation 0.11 0 0
+      children [
+        Transform {
+          translation -0.06 0 0
+          children [
+            DEF sensor_left Shape {
+              appearance PBRAppearance {
+                roughness 1
+                metalness 0
+              }
+              geometry Sphere {
+                radius 0.002
+              }
+            }
+          ]
+        }
+      ]
+      name "sensor_left"
+      boundingObject USE sensor_left
+    }
+    Camera {
+      translation 0 0.01 0.1
+      rotation 0.997247439051535 -0.029256912880747554 -0.06812912999476152 0
+      children [
+        Transform {
+          children [
+            DEF camera_shape Shape {
+              appearance PBRAppearance {
+                baseColor 0.7 0.3 0.7
+                roughness 1
+                metalness 0
+              }
+              geometry Sphere {
+                radius 0.0026
+                subdivision 4
+              }
+            }
+          ]
+        }
+      ]
+      boundingObject USE camera_shape
+      fieldOfView 1.047
+      width 400
+      height 200
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 1948.0699998257908
+        axis -1 0 0
+        anchor 0.0700009 0.00251776 0.0916212
+      }
+      device [
+        PositionSensor {
+          name "sensor_front_e"
+        }
+        RotationalMotor {
+          name "roda_front_e"
+        }
+      ]
+      endPoint Solid {
+        translation 0.0700009 0.0025177599999799028 0.0918297
+        rotation -0.1394316994926153 0.1394320623135486 0.9803660036820899 1.5906173650381894
+        children [
+          Transform {
+            translation 0 0.01 0
+            rotation 0 0 1 3.141592653589793
+            children [
+              DEF roda_shape Shape {
+                appearance PBRAppearance {
+                  baseColor 0.1 0 0
+                  roughness 1
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.01
+                  radius 0.02
+                }
+              }
+            ]
+          }
+        ]
+        name "roda_front_e"
+        boundingObject Transform {
+          translation 1.22461e-18 0.01 0
+          rotation 0 0 1 3.141592653589793
+          children [
+            DEF roda_shape Shape {
+              appearance PBRAppearance {
+                baseColor 0.1 0 0
+                roughness 1
+                metalness 0
+              }
+              geometry Cylinder {
+                height 0.01
+                radius 0.02
+              }
+            }
+          ]
+        }
+        physics DEF fisica_roda Physics {
+          mass 0.005
+        }
+        linearVelocity -6.93692487956004e-16 -4.8578984834791454e-09 2.732165646157512e-16
+        angularVelocity 7.222180210775233e-10 4.789691285596533e-16 1.5727765728935403e-14
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 1948.0699998322314
+        axis -1 0 0
+        anchor -0.0499991 0.0010521 0.0914211
+      }
+      device [
+        PositionSensor {
+          name "sensor_front_d"
+        }
+        RotationalMotor {
+          name "roda_front_d"
+        }
+      ]
+      endPoint Solid {
+        translation -0.0499991 0.0010501055333293494 0.09141311668216172
+        rotation -0.1394317025883259 0.13943206540923697 0.9803660028015224 1.5906173659362108
+        children [
+          Transform {
+            translation 0 0.01 0
+            rotation 0 0 1 3.141592653589793
+            children [
+              DEF roda_shape Shape {
+                appearance PBRAppearance {
+                  baseColor 0.1 0 0
+                  roughness 1
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.01
+                  radius 0.02
+                }
+              }
+            ]
+          }
+        ]
+        name "roda_front_d"
+        boundingObject Transform {
+          translation 1.22461e-18 0.01 0
+          rotation 0 0 1 3.141592653589793
+          children [
+            DEF roda_shape Shape {
+              appearance PBRAppearance {
+                baseColor 0.1 0 0
+                roughness 1
+                metalness 0
+              }
+              geometry Cylinder {
+                height 0.01
+                radius 0.02
+              }
+            }
+          ]
+        }
+        physics DEF fisica_roda Physics {
+          mass 0.005
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 1948.0700000358079
+        axis -1 0 0
+        anchor -0.0499999 0.00279377 -0.0721321
+      }
+      device [
+        PositionSensor {
+          name "sensor_back_d"
+        }
+        RotationalMotor {
+          name "roda_back_d"
+        }
+      ]
+      endPoint Solid {
+        translation -0.0499999 0.002804984219820963 -0.07209459731540724
+        rotation -0.1394318947897333 0.13943201915911366 0.980365982043725 1.590619096923282
+        children [
+          Transform {
+            translation 0 0.01 0
+            rotation 0 0 1 3.141592653589793
+            children [
+              DEF roda_shape Shape {
+                appearance PBRAppearance {
+                  baseColor 0.1 0 0
+                  roughness 1
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.01
+                  radius 0.02
+                }
+              }
+            ]
+          }
+        ]
+        name "roda_back_d(2)"
+        boundingObject Transform {
+          translation 1.22461e-18 0.01 0
+          rotation 0 0 1 3.141592653589793
+          children [
+            DEF roda_shape Shape {
+              appearance PBRAppearance {
+                baseColor 0.1 0 0
+                roughness 1
+                metalness 0
+              }
+              geometry Cylinder {
+                height 0.01
+                radius 0.02
+              }
+            }
+          ]
+        }
+        physics DEF fisica_roda Physics {
+          mass 0.005
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 1948.069999937681
+        axis -1 0 0
+        anchor 0.0700001 0.00251859 -0.0721321
+      }
+      device [
+        PositionSensor {
+          name "sensor_back_e"
+        }
+        RotationalMotor {
+          name "roda_back_e"
+        }
+      ]
+      endPoint Solid {
+        translation 0.0700001 0.002793803314629049 -0.07217124217339355
+        rotation -0.13943187833217782 0.13943199090172534 0.9803659884032808 1.5906191750495071
+        children [
+          Transform {
+            translation 0 0.01 0
+            rotation 0 0 1 3.141592653589793
+            children [
+              DEF roda_shape Shape {
+                appearance PBRAppearance {
+                  baseColor 0.1 0 0
+                  roughness 1
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.01
+                  radius 0.02
+                }
+              }
+            ]
+          }
+        ]
+        name "roda_back_e"
+        boundingObject Transform {
+          translation 1.22461e-18 0.01 0
+          rotation 0 0 1 3.141592653589793
+          children [
+            DEF roda_shape Shape {
+              appearance PBRAppearance {
+                baseColor 0.1 0 0
+                roughness 1
+                metalness 0
+              }
+              geometry Cylinder {
+                height 0.01
+                radius 0.02
+              }
+            }
+          ]
+        }
+        physics DEF fisica_roda Physics {
+          mass 0.005
+        }
+      }
+    }
+    Shape {
+      appearance PBRAppearance {
+      }
+      geometry Box {
+        size 0.1 0.01 0.25
+      }
+    }
+  ]
+}
+TexturedBackgroundLight {
+}
+TexturedBackground {
+}

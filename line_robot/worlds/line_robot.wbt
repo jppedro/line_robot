@@ -3,8 +3,8 @@ WorldInfo {
   coordinateSystem "NUE"
 }
 Viewpoint {
-  orientation 0.9560764912601755 0.2825026231774398 0.07816655779486079 5.7197685279487125
-  position -1.0437637336036412 1.7223783972024362 4.5607004875590045
+  orientation 0.5718700739688257 0.6037533385876812 0.5553796220992616 4.254009490039447
+  position 0.24905968615852755 4.929515716674407 0.6554547849218625
 }
 RectangleArena {
   translation 0 0 0.73
@@ -28,7 +28,7 @@ Robot {
       ]
       endPoint Solid {
         translation -0.055 0.008 -0.08
-        rotation 0.6497971740302768 -0.6492799290500328 0.39522045285517604 2.3882894842062674
+        rotation -7.85358992791498e-17 0 1 1.57
         children [
           DEF roda Shape {
             appearance Asphalt {
@@ -57,7 +57,7 @@ Robot {
       ]
       endPoint Solid {
         translation -0.055 0.008 0.08
-        rotation 0.6497971209182505 -0.6492798759802844 0.3952206273632225 2.3882891821658294
+        rotation 0 -2.3560769783744947e-16 1 1.5699999999999994
         children [
           DEF roda Shape {
             appearance Asphalt {
@@ -86,7 +86,7 @@ Robot {
       ]
       endPoint Solid {
         translation 0.055 0.008 0.08
-        rotation 0.5436823165519579 -0.5432495400482686 0.6397573570550332 2.0025874638335734
+        rotation 0 3.141435971165992e-16 1 1.57
         children [
           DEF roda Shape {
             appearance Asphalt {
@@ -115,7 +115,7 @@ Robot {
       ]
       endPoint Solid {
         translation 0.055 0.008 -0.08
-        rotation 0.5436824215207302 -0.543249644933485 0.6397571787866059 2.002587716908489
+        rotation -2.3560769783744927e-16 0 1 1.5700000000000007
         children [
           DEF roda Shape {
             appearance Asphalt {
@@ -133,8 +133,8 @@ Robot {
       }
     }
     DistanceSensor {
-      translation -0.01 -1.01962e-08 0.13
-      rotation 0 0 1 -1.5707953071795862
+      translation -0.005 -1.01962e-08 0.13
+      rotation 9.58979e-09 9.5898e-09 1 -1.5707953071795862
       children [
         Solid {
           children [
@@ -159,7 +159,7 @@ Robot {
       type "infra-red"
     }
     DistanceSensor {
-      translation 0.01 1.01961e-08 0.13
+      translation 0.005 1.01961e-08 0.13
       rotation 0 0 1 -1.5707953071795862
       children [
         Solid {
@@ -186,7 +186,7 @@ Robot {
     }
     Camera {
       translation 0 0.01 0.1
-      rotation 0.997247439051535 -0.029256912880747554 -0.06812912999476152 0
+      rotation 0 1 0 3.14159
       children [
         Transform {
           rotation 0 -1 0 2.45177e-06

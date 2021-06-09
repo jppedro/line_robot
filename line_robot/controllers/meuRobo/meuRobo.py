@@ -10,11 +10,10 @@ import os
 
 from controller import Robot, GPS
 from io import BytesIO
-from PIL import Image,ImageDraw,ImageFont,ImageOps
 
 print("Iniciando")
 
-velocity = 2
+velocity = 10
 timestep = 64
 
 def get_port():
@@ -60,10 +59,10 @@ class MeuRobot:
         self.back_motor_e.setPosition(float('+inf'))
         self.back_motor_d.setPosition(float('+inf'))
 
-        self.front_motor_e.setVelocity(velocidade)
-        self.front_motor_d.setVelocity(velocidade)
-        self.back_motor_e.setVelocity(velocidade)
-        self.back_motor_d.setVelocity(velocidade)
+        self.front_motor_e.setVelocity(velocity)
+        self.front_motor_d.setVelocity(velocity)
+        self.back_motor_e.setVelocity(velocity)
+        self.back_motor_d.setVelocity(velocity)
         
         # obtem os sensores de linha
         
@@ -81,28 +80,31 @@ class MeuRobot:
 
 class TI502(MeuRobot):
     def andar_frente(self): 
-        self.front_motor_e.setVelocity(velocidade)
-        self.front_motor_d.setVelocity(velocidade)
-        self.back_motor_e.setVelocity(velocidade)
-        self.back_motor_d.setVelocity(velocidade)
+        print("andando")
+        self.front_motor_e.setVelocity(velocity)
+        self.front_motor_d.setVelocity(velocity)
+        self.back_motor_e.setVelocity(velocity)
+        self.back_motor_d.setVelocity(velocity)
         
     def andar_tras(self): 
-        self.front_motor_e.setVelocity(-velocidade)
+        self.front_motor_e.setVelocity(-velocity)
+        self.front_motor_d.setVelocity(-velocity)
+        self.back_motor_e.setVelocity(-velocity)
+        self.back_motor_d.setVelocity(-velocity)
+        
+    def virar_direita(self, velocidade):
+        print("direita")
+        self.front_motor_e.setVelocity(0)
         self.front_motor_d.setVelocity(-velocidade)
         self.back_motor_e.setVelocity(-velocidade)
-        self.back_motor_d.setVelocity(-velocidade)
-        
-    def virar_direita(self):
-        self.front_motor_e.setVelocity(velocidade)
-        self.front_motor_d.setVelocity(velocidade)
-        self.back_motor_e.setVelocity(0)
         self.back_motor_d.setVelocity(0)
     
-    def virar_esquerda(self):
-        self.front_motor_e.setVelocity(0)
+    def virar_esquerda(self, velocidade):
+        print("esquerda")
+        self.front_motor_e.setVelocity(-velocidade)
         self.front_motor_d.setVelocity(0)
-        self.back_motor_e.setVelocity(velocidade)
-        self.back_motor_d.setVelocity(velocidade)
+        self.back_motor_e.setVelocity(-velocidade)
+        self.back_motor_d.setVelocity(0)
 
     def  pararRobo(self, estado):
         self.parado = estado    
@@ -111,15 +113,18 @@ class TI502(MeuRobot):
 
     def run(self):
     
-        while self.robo.step(timestep) != -1:
+       while self.robot.step(timestep) != -1:
             left_line = self.line_sensor_e.getValue()
             right_line = self.line_sensor_d.getValue()
+            print(right_line)
+            print(left_line)
             
-            if(left_line != 1000 and right_line == 1000)
-                self.virar_esquerda()
+           
+            if(left_line != 0 and right_line == 0):
+                self.virar_direita(10)
             
-            if(right_line != 1000 and left_line == 1000)
-                self.virar_direita()
+            if(right_line != 0 and left_line == 0):
+                self.virar_esquerda(10)
             
             else:
                 self.andar_frente()
@@ -131,8 +136,6 @@ class TI502(MeuRobot):
 robot = Robot()
 
 robot_controler = TI502(robot)
-
-_thread.start_new_thread(servidor, (get_ip(),get_port()))
 
 robot_controler.run()                
 
